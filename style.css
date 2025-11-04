@@ -33,7 +33,6 @@ body {
   background-color: #e6f0e6;
 }
 
-
 #confettiCanvas,
 #heartsCanvas {
   position: fixed;
@@ -41,7 +40,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; 
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -115,4 +114,98 @@ body {
 .imgset img {
   box-shadow: 0px 6px 11px 7px rgba(0, 0, 0, 0.22);
   border-radius: 5px;
+}
+
+
+/* loading spinner */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #ffe6f2, #fff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.spinner {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border: 6px solid #ffd1e8;
+  border-top: 6px solid #ff4fa3;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, #fff 40%, transparent 41%);
+  box-shadow: 0 0 25px rgba(255, 79, 163, 0.2);
+}
+
+.spinner img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: brightness(0); /* white → black */
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+#loader p {
+  margin-top: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ff4fa3;
+  letter-spacing: 1px;
+  animation: fadeInText 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#main-content {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#main-content.visible {
+  opacity: 1;
 }

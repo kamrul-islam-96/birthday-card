@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ODYWBM</title>
-    <link
-      rel="shortcut icon"
-      href="./assets/logo.png"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="loader">
+      <div class="spinner">
+        <img src="./assets/logo.png" alt="">
+      </div>
+    </div>
+
     <canvas id="confettiCanvas"></canvas>
     <canvas id="heartsCanvas"></canvas>
 
@@ -91,6 +93,16 @@
         <p>Have a magical day filled with happiness!</p>
       </div>
     </div>
+
+
+     <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.getElementById("loader").classList.add("hidden");
+          document.getElementById("main-content").classList.add("visible");
+        }, 5000); 
+      });
+    </script>
 
     <script src="index.js"></script>
   </body>
